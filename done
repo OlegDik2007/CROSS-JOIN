@@ -1,0 +1,18 @@
+with t as  (select user_id from users  limit 100)
+
+    select t.user_id as user_id,
+    b.name as name
+
+from t
+cross join 
+        products b
+      ORDER BY t.user_id DESC, b.name DESC;
+
+*********************************************
+
+SELECT user_id,
+       name
+FROM   (SELECT user_id
+        FROM   users limit 100) t1 cross join (SELECT name
+                                       FROM   products) t2
+ORDER BY user_id, name
